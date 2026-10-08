@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusOne - Students</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">C</div>
+
+            <div>
+                <h2>CampusOne</h2>
+                <span>Management System</span>
+            </div>
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html" class="nav-link">
+                <span>📊</span>
+                Dashboard
+            </a>
+
+            <a href="students.html" class="nav-link active">
+                <span>👨‍🎓</span>
+                Students
+            </a>
+
+            <a href="courses.html" class="nav-link">
+                <span>📚</span>
+                Courses
+            </a>
+
+            <a href="departments.html" class="nav-link">
+                <span>🏢</span>
+                Departments
+            </a>
+
+            <a href="marks.html" class="nav-link">
+                <span>📝</span>
+                Marks
+            </a>
+
+            <a href="attendance.html" class="nav-link">
+                <span>📅</span>
+                Attendance
+            </a>
+
+            <a href="profile.html" class="nav-link">
+                <span>👤</span>
+                Profile
+            </a>
+
+        </nav>
+
+        <!-- LOGOUT -->
+        <div class="sidebar-bottom">
+
+            <a href="index.html"
+               class="nav-link logout"
+               onclick="logoutUser(event)">
+
+                <span>🚪</span>
+                Logout
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div>
+
+                <h1>Students</h1>
+
+                <p>Manage student records</p>
+
+            </div>
+
+        </header>
+
+
+        <!-- STUDENT PANEL -->
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>Student Records</h2>
+
+                    <p>
+                        View and manage all students
+                    </p>
+
+                </div>
+
+
+                <button
+                        class="primary-btn"
+                        onclick="openStudentForm()">
+
+                    + Add Student
+
+                </button>
+
+            </div>
+
+
+            <!-- SEARCH -->
+            <div class="toolbar">
+
+                <input
+                        type="text"
+                        id="studentSearch"
+                        placeholder="Search by name, ID or department..."
+                        onkeyup="searchStudents()">
+
+            </div>
+
+
+            <!-- TABLE -->
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Student ID</th>
+
+                        <th>Name</th>
+
+                        <th>Email</th>
+
+                        <th>Department</th>
+
+                        <th>Year</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentsTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- STUDENT MODAL -->
+<!-- ========================= -->
+
+<div id="studentModal" class="modal">
+
+    <div class="modal-content">
+
+        <!-- MODAL HEADER -->
+        <div class="modal-header">
+
+            <h2 id="studentModalTitle">
+                Add Student
+            </h2>
+
+            <button
+                    onclick="closeStudentForm()"
+                    class="close-btn">
+
+                &times;
+
+            </button>
+
+        </div>
+
+
+        <!-- STUDENT FORM -->
+        <form id="studentForm">
+
+            <!-- DATABASE ID -->
+            <input
+                    type="hidden"
+                    id="studentDbId">
+
+
+            <div class="form-grid">
+
+
+                <!-- STUDENT ID -->
+                <div class="form-group">
+
+                    <label for="studentId">
+                        Student ID
+                    </label>
+
+                    <input
+                            type="text"
+                            id="studentId"
+                            placeholder="Example: S001"
+                            required>
+
+                </div>
+
+
+                <!-- NAME -->
+                <div class="form-group">
+
+                    <label for="studentName">
+                        Name
+                    </label>
+
+                    <input
+                            type="text"
+                            id="studentName"
+                            placeholder="Enter student name"
+                            required>
+
+                </div>
+
+
+                <!-- EMAIL -->
+                <div class="form-group">
+
+                    <label for="studentEmail">
+                        Email
+                    </label>
+
+                    <input
+                            type="email"
+                            id="studentEmail"
+                            placeholder="student@gmail.com"
+                            required>
+
+                </div>
+
+
+                <!-- PHONE -->
+                <div class="form-group">
+
+                    <label for="studentPhone">
+                        Phone
+                    </label>
+
+                    <input
+                            type="text"
+                            id="studentPhone"
+                            placeholder="Enter phone number">
+
+                </div>
+
+
+                <!-- GENDER -->
+                <div class="form-group">
+
+                    <label for="studentGender">
+                        Gender
+                    </label>
+
+                    <select id="studentGender">
+
+                        <option value="Male">
+                            Male
+                        </option>
+
+                        <option value="Female">
+                            Female
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DEPARTMENT -->
+                <div class="form-group">
+
+                    <label for="studentDepartment">
+                        Department
+                    </label>
+
+                    <select
+                            id="studentDepartment"
+                            required>
+
+                        <option value="">
+                            Select Department
+                        </option>
+
+                        <option value="CSE">
+                            CSE
+                        </option>
+
+                        <option value="ECE">
+                            ECE
+                        </option>
+
+                        <option value="EEE">
+                            EEE
+                        </option>
+
+                        <option value="Others">
+                            Others
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- YEAR -->
+                <div class="form-group">
+
+                    <label for="studentYear">
+                        Year
+                    </label>
+
+                    <select id="studentYear">
+
+                        <option value="1st Year">
+                            1st Year
+                        </option>
+
+                        <option value="2nd Year">
+                            2nd Year
+                        </option>
+
+                        <option value="3rd Year">
+                            3rd Year
+                        </option>
+
+                        <option value="4th Year">
+                            4th Year
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- STATUS -->
+                <div class="form-group">
+
+                    <label for="studentStatus">
+                        Status
+                    </label>
+
+                    <select id="studentStatus">
+
+                        <option value="Active">
+                            Active
+                        </option>
+
+                        <option value="Inactive">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+            <div class="modal-actions">
+
+                <button
+                        type="button"
+                        class="secondary-btn"
+                        onclick="closeStudentForm()">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                        type="submit"
+                        class="primary-btn"
+                        id="saveStudentButton">
+
+                    Save Student
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+<script src="js/students.js"></script>
+
+</body>
+
+</html>

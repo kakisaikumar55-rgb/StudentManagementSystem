@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusOne - Courses</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">C</div>
+            <div>
+                <h2>CampusOne</h2>
+                <span>Management System</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="dashboard.html" class="nav-link"><span>📊</span> Dashboard</a>
+            <a href="students.html" class="nav-link"><span>👨‍🎓</span> Students</a>
+            <a href="courses.html" class="nav-link active"><span>📚</span> Courses</a>
+            <a href="departments.html" class="nav-link"><span>🏢</span> Departments</a>
+            <a href="marks.html" class="nav-link"><span>📝</span> Marks</a>
+            <a href="attendance.html" class="nav-link"><span>📅</span> Attendance</a>
+            <a href="profile.html" class="nav-link"><span>👤</span> Profile</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="index.html" class="nav-link logout"><span>🚪</span> Logout</a>
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h1>Courses</h1>
+                <p>Manage college courses</p>
+            </div>
+        </header>
+
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <h2>Course Records</h2>
+                    <p>All available courses</p>
+                </div>
+
+                <button class="primary-btn" onclick="openCourseForm()">
+                    + Add Course
+                </button>
+
+            </div>
+
+            <div class="toolbar">
+                <input
+                        type="text"
+                        id="courseSearch"
+                        placeholder="Search courses..."
+                        onkeyup="searchCourses()">
+            </div>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Course ID</th>
+                        <th>Course Name</th>
+                        <th>Department</th>
+                        <th>Duration</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="coursesTable">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<div id="courseModal" class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h2 id="courseModalTitle">Add Course</h2>
+            <button onclick="closeCourseForm()" class="close-btn">&times;</button>
+        </div>
+
+        <form id="courseForm">
+
+            <input type="hidden" id="courseDbId">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Course ID</label>
+                    <input type="text" id="courseId" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Course Name</label>
+                    <input type="text" id="courseName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Department</label>
+                    <input type="text" id="courseDepartment" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Duration</label>
+                    <input type="text" id="courseDuration" placeholder="4 Years">
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Description</label>
+                    <textarea id="courseDescription" rows="4"></textarea>
+                </div>
+
+            </div>
+
+            <div class="modal-actions">
+
+                <button type="button"
+                        class="secondary-btn"
+                        onclick="closeCourseForm()">
+                    Cancel
+                </button>
+
+                <button type="submit" class="primary-btn">
+                    Save Course
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="js/courses.js"></script>
+
+</body>
+</html>

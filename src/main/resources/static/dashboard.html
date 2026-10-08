@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusOne - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">C</div>
+            <div>
+                <h2>CampusOne</h2>
+                <span>Management System</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="dashboard.html" class="nav-link active">
+                <span>📊</span> Dashboard
+            </a>
+
+            <a href="students.html" class="nav-link">
+                <span>👨‍🎓</span> Students
+            </a>
+
+            <a href="courses.html" class="nav-link">
+                <span>📚</span> Courses
+            </a>
+
+            <a href="departments.html" class="nav-link">
+                <span>🏢</span> Departments
+            </a>
+
+            <a href="marks.html" class="nav-link">
+                <span>📝</span> Marks
+            </a>
+
+            <a href="attendance.html" class="nav-link">
+                <span>📅</span> Attendance
+            </a>
+
+            <a href="profile.html" class="nav-link">
+                <span>👤</span> Profile
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="index.html" class="nav-link logout">
+                <span>🚪</span> Logout
+            </a>
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h1>Dashboard</h1>
+                <p>Welcome back to CampusOne</p>
+            </div>
+
+            <div class="admin-box">
+                <div class="avatar">SK</div>
+                <div>
+                    <strong>Sai Kumar</strong>
+                    <small>Administrator</small>
+                </div>
+            </div>
+        </header>
+
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon blue">👨‍🎓</div>
+                <div>
+                    <p>Total Students</p>
+                    <h2 id="studentCount">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon green">📚</div>
+                <div>
+                    <p>Total Courses</p>
+                    <h2 id="courseCount">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon purple">🏢</div>
+                <div>
+                    <p>Departments</p>
+                    <h2 id="departmentCount">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon orange">📝</div>
+                <div>
+                    <p>Marks Records</p>
+                    <h2 id="marksCount">0</h2>
+                </div>
+            </div>
+
+        </section>
+
+
+        <section class="dashboard-grid">
+
+            <div class="panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Recent Students</h2>
+                        <p>Recently added students</p>
+                    </div>
+
+                    <a href="students.html" class="view-btn">
+                        View All
+                    </a>
+                </div>
+
+                <div class="table-wrapper">
+
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Year</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+
+                        <tbody id="recentStudents">
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel quick-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Quick Actions</h2>
+                        <p>Manage your system</p>
+                    </div>
+                </div>
+
+                <a href="students.html" class="quick-action">
+                    <span>👨‍🎓</span>
+                    <div>
+                        <strong>Manage Students</strong>
+                        <small>Add, edit and delete students</small>
+                    </div>
+                </a>
+
+                <a href="courses.html" class="quick-action">
+                    <span>📚</span>
+                    <div>
+                        <strong>Manage Courses</strong>
+                        <small>Manage college courses</small>
+                    </div>
+                </a>
+
+                <a href="marks.html" class="quick-action">
+                    <span>📝</span>
+                    <div>
+                        <strong>Manage Marks</strong>
+                        <small>View student marks</small>
+                    </div>
+                </a>
+
+                <a href="attendance.html" class="quick-action">
+                    <span>📅</span>
+                    <div>
+                        <strong>Attendance</strong>
+                        <small>Manage attendance records</small>
+                    </div>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>

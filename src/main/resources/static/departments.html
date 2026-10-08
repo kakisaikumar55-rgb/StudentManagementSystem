@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusOne - Departments</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">C</div>
+            <div>
+                <h2>CampusOne</h2>
+                <span>Management System</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="dashboard.html" class="nav-link"><span>📊</span> Dashboard</a>
+            <a href="students.html" class="nav-link"><span>👨‍🎓</span> Students</a>
+            <a href="courses.html" class="nav-link"><span>📚</span> Courses</a>
+            <a href="departments.html" class="nav-link active"><span>🏢</span> Departments</a>
+            <a href="marks.html" class="nav-link"><span>📝</span> Marks</a>
+            <a href="attendance.html" class="nav-link"><span>📅</span> Attendance</a>
+            <a href="profile.html" class="nav-link"><span>👤</span> Profile</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="index.html" class="nav-link logout"><span>🚪</span> Logout</a>
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h1>Departments</h1>
+                <p>Manage academic departments</p>
+            </div>
+        </header>
+
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <h2>Department Records</h2>
+                    <p>All departments</p>
+                </div>
+
+                <button class="primary-btn" onclick="openDepartmentForm()">
+                    + Add Department
+                </button>
+
+            </div>
+
+            <div class="toolbar">
+                <input
+                        type="text"
+                        id="departmentSearch"
+                        placeholder="Search departments..."
+                        onkeyup="searchDepartments()">
+            </div>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Department ID</th>
+                        <th>Department Name</th>
+                        <th>HOD</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="departmentsTable">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<div id="departmentModal" class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h2 id="departmentModalTitle">Add Department</h2>
+            <button onclick="closeDepartmentForm()" class="close-btn">&times;</button>
+        </div>
+
+        <form id="departmentForm">
+
+            <input type="hidden" id="departmentDbId">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Department ID</label>
+                    <input type="text" id="departmentId" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Department Name</label>
+                    <input type="text" id="departmentName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>HOD</label>
+                    <input type="text" id="departmentHod">
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="departmentEmail">
+                </div>
+
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" id="departmentPhone">
+                </div>
+
+            </div>
+
+            <div class="modal-actions">
+
+                <button type="button"
+                        class="secondary-btn"
+                        onclick="closeDepartmentForm()">
+                    Cancel
+                </button>
+
+                <button type="submit" class="primary-btn">
+                    Save Department
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="js/departments.js"></script>
+
+</body>
+</html>
